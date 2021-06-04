@@ -36,7 +36,7 @@ class Stocks extends Component {
 
 
         }
-        
+
     }
     handleClick(val) {
         this.setState({showMore: !val})
@@ -44,7 +44,7 @@ class Stocks extends Component {
     handleChartTable(val){
         this.setState({showMoreChart: !val})
     }
-    
+
 
     handleChange = (event) => {
         this.setState({loading:true})
@@ -74,7 +74,7 @@ class Stocks extends Component {
     componentDidMount(){
         this.Stocker();
         this.getNews();
-        
+
 
     }
 
@@ -92,7 +92,7 @@ class Stocks extends Component {
         let wholeHigh=[];
         let wholeLow=[];
         let wholeClose=[];
-        
+
         fetch(API_Call)
             .then(
                 function(
@@ -118,16 +118,16 @@ class Stocks extends Component {
                                     wholeClose.push(
                                         data['Time Series (Daily)'][key]['4. close']
                                         );
-                            
+
                             if(x>=1){
                                 presentDate.push(key)
                                     x=x-1
                             }
                     }
-                    
+
 
                     console.log('dates are here',stocksXval);
-                    pointerToThis.setState({ 
+                    pointerToThis.setState({
                         x_val:stocksXval,
                         y_val:stocksYval,
                         presentDate:presentDate,
@@ -143,7 +143,7 @@ class Stocks extends Component {
     getNews(){
         const Stock_Name=this.state.initial_Name;
         console.log('Given News Name::',Stock_Name);
-        let API_Call=`http://newsapi.org/v2/everything?q=${Stock_Name}&language=en&from=2020-09-16&sortBy=publishedAt&apiKey=f6fed2d1ae0645569fb2f655b9ecdd97`
+        let API_Call=`https://newsapi.org/v2/everything?q=${Stock_Name}&from=2021-05-04&sortBy=publishedAt&apiKey=baf4396703464b8085fcd093288b7a76`
 
         fetch(API_Call)
             .then(
@@ -157,9 +157,9 @@ class Stocks extends Component {
                     articles: data.articles
                 })
             })
-                
 
-    
+
+
     }
 
 
@@ -185,12 +185,12 @@ class Stocks extends Component {
         const noOfClose=this.state.showMoreChart ? closeVal.length :21;
 
 
-        
-    
+
+
         return (
-            
+
             <div >
-            
+
                 <div className="jumbotron jumbotron-fluid bg-dark text-light">
                     <div className="container">
                         <h2 className="display-3">React Stock Market</h2>
@@ -216,23 +216,23 @@ class Stocks extends Component {
                         <div className="col-md-7 col-xs-12 col-sm-12 graph_container" >
                             {loading ?<Loading /> :<Chart x_axis={this.state.x_val} y_axis={this.state.y_val} loader={this.state.loading}  />}
                         </div>
-                    
-                    <div className="col-md-5 col-xs-12 col-sm-12 "> 
+
+                    <div className="col-md-5 col-xs-12 col-sm-12 ">
                         <h2 style={{align: 'left' ,color:"white",style:'underline'}}>{this.state.initial_Name}</h2>
-                                    
+
                                             <hr  style={{background: "grey",}} />
                                             {loading ?<Loading /> :<Cards  open={this.state.y_val} close={this.state.wholeClose} high={this.state.wholeHigh} low={this.state.wholeLow} date={this.state.presentDate} />}
                                             <hr style={{background: "grey"}}></hr>
                     </div>
                 </div>
 
-                        <Container-fluid>
-                        
-                            <br />        
+                        <div classname='container-fluid'>
+
+                            <br />
                                 <br />
-                            
+
                             <div className="row mt-4">
-                            
+
                                 <div className="col-md-7 col-sm-12" >
                                 <div className="row">
                                     <div className="col">
@@ -242,12 +242,12 @@ class Stocks extends Component {
                                     <span>{this.state.showMoreChart ?<button onClick={()=> this.handleChartTable(true)} style={{color:"red"}}>Show Less</button>:<button onClick={()=> this.handleChartTable(false)} style={{color:"red"}}>Show more</button> }</span>
                                     </div>
                                 </div>
-                                    
-                                    
+
+
                                     {/* <TableTrend dates={this.state.x_val} open={this.state.y_val} high={this.state.wholeHigh} low={this.state.wholeLow} close={this.state.wholeClose}/> */}
-                                    {loading ?<Loading />:  
+                                    {loading ?<Loading />:
                                     <div className="container-fluid">
-                                            
+
                                         <div className="row" style={{}}>
                                             <div className="col-xs-3" style={{border: '1px solid',padding:'10px',textAlign: 'center'}} >
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>Date</h5>
@@ -259,7 +259,7 @@ class Stocks extends Component {
                                                     })
                                                 }
                                             </div>
-                                            
+
                                             <div className="col" style={{border: '1px solid',padding:'10px',textAlign: 'center'}}>
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>open</h5>
                                             <hr style={{background: "grey"}}/>
@@ -274,7 +274,7 @@ class Stocks extends Component {
                                             <div className="col see" style={{border: '1px solid',padding:'10px',textAlign: 'center'}}>
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>High</h5>
                                             <hr style={{background: "grey"}}/>
-                                            
+
                                             {highVal.slice(0,noOfHigh).map((item) => {
                                                     return (
                                                     <div style={{padding:'10', margin:'10',marginBottom:'100',fontSize:"2vmin",padding: '10px',color: '#8d93ab'}}>{parseFloat(item).toFixed( 2 )}</div>
@@ -304,15 +304,15 @@ class Stocks extends Component {
                                                     })
                                                 }
                                             </div>
-                                            
-                                            
+
+
                                         </div>
-                                                
-                                                    
-                                                
-                                        
-                                                
-                                                
+
+
+
+
+
+
                     </div>
                     }
                                 </div>
@@ -327,9 +327,9 @@ class Stocks extends Component {
                                                     <img src={item.urlToImage} style={{width:'100%',maxHeight:"100px",objectFit:'contain',verticalAlign: "middle",margin:'10px'}} />
                                                 </div>
                                                         <div className="col-sm-8 col-xs-8" style={{}} >
-                                                        
+
                                                             <h6 style={{color: '#dee4e7', textAlign:'justify',padding:'15px',paddingLeft:'0px'}}>{item.title}</h6>
-                                                            
+
                                                             <p></p>
                                                         </div>
                                                         <hr style={{background:'grey'}} />
@@ -340,12 +340,12 @@ class Stocks extends Component {
                                             </div>
                                 </div>
                             </div>
-                            </Container-fluid>
-                        
+                            </div>
+
                     <Footer/>
                     </div>
-            
-            </div>      
+
+            </div>
 );
         }
 }
