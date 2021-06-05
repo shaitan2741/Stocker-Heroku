@@ -4,10 +4,9 @@ import Cards from '../Components/CardComponents';
 import StockUtils from './StockUtils';
 import Chart from '../Components/MainChartComponent';
 import Loading from '../Components/LoadingComponent';
-import {Input,Container,Jumbotron} from 'reactstrap';
+import {Input} from 'reactstrap';
 import NewsCard from './Card';
-import TableTrend from '../NewsManagement/Trends';
-import ParticlesBg from 'particles-bg';
+
 
 
 
@@ -167,7 +166,7 @@ class Stocks extends Component {
 
         const{loading} =this.state
         const newsElement =this.state.articles;
-        const numberOfItems = this.state.showMore ? newsElement.length : 7;
+        const numberOfItems = this.state.showMore ? newsElement.length : 8;
 
         const dateVal=this.state.x_val;
         const noOfDate=this.state.showMoreChart ? dateVal.length :21;
@@ -226,35 +225,34 @@ class Stocks extends Component {
                     </div>
                 </div>
 
-                        <div classname='container-fluid'>
+                        <div classname='container'>
 
                             <br />
                                 <br />
 
-                            <div className="row mt-4">
-
-                                <div className="col-md-7 col-sm-12" >
-                                <div className="row">
-                                    <div className="col">
-                                    <h2 style={{color: 'white',textAlign: 'justify'}}>Trends</h2>
-                                    </div>
-                                    <div className="col">
-                                    <span>{this.state.showMoreChart ?<button onClick={()=> this.handleChartTable(true)} style={{color:"red"}}>Show Less</button>:<button onClick={()=> this.handleChartTable(false)} style={{color:"red"}}>Show more</button> }</span>
-                                    </div>
-                                </div>
-
-
+                            
+                                <div className="row mt-4x">
+                                <div className="col-md-7 col-sm-12">
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <h2 className="text-white text-left text-uppercase font-italic mb-4 ">Trends</h2>
+                                                </div>
+                                                <div className="col-md-5">
+                                                    <h3 className="text-white text-right text-uppercase mt-3 font-italic">{this.state.showMoreChart ?<button type="button" class="btn btn-primary btn-sm" onClick={()=> this.handleChartTable(true)}>Show Less</button>:<button button type="button" class="btn btn-primary btn-sm" onClick={()=> this.handleChartTable(false)}>Show more</button> }</h3>
+                                                </div>
+                                                
+                                            </div>
                                     {/* <TableTrend dates={this.state.x_val} open={this.state.y_val} high={this.state.wholeHigh} low={this.state.wholeLow} close={this.state.wholeClose}/> */}
                                     {loading ?<Loading />:
-                                    <div className="container-fluid">
+                                    <div className="container">
 
                                         <div className="row" style={{}}>
-                                            <div className="col-xs-3" style={{border: '1px solid',padding:'10px',textAlign: 'center'}} >
+                                            <div className="col col-sm-3" style={{border: '1px solid',padding:'10px',textAlign: 'center'}} >
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>Date</h5>
                                             <hr style={{background: "grey"}}/>
                                             {dateVal.slice(0,noOfDate).map((item) => {
                                                     return (
-                                                    <div style={{color: 'aqua',padding:'10', margin:'10',fontSize:"2vmin",padding: '10px'}}>{item}</div>
+                                                    <div style={{color: 'aqua',padding:'9px',fontSize:"2vmin"}}>{item}</div>
                                                     )
                                                     })
                                                 }
@@ -265,63 +263,65 @@ class Stocks extends Component {
                                             <hr style={{background: "grey"}}/>
                                             {openVal.slice(0,noOfOpen).map((item) => {
                                                     return (
-                                                    <div style={{color: '#8d93ab',padding:'10', margin:'10',fontSize:"2vmin",padding: '10px'}}>{parseFloat(item).toFixed( 2 )}</div>
+                                                    <div style={{color: '#8d93ab',padding:'10', margin:'10',fontSize:"2vmin",padding: '9px'}}>{parseFloat(item).toFixed( 2 )}</div>
                                                     )
                                                     })
                                                 }
                                             </div>
 
-                                            <div className="col see" style={{border: '1px solid',padding:'10px',textAlign: 'center'}}>
+                                            <div className="col" style={{border: '1px solid',padding:'9px',textAlign: 'center'}}>
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>High</h5>
                                             <hr style={{background: "grey"}}/>
 
                                             {highVal.slice(0,noOfHigh).map((item) => {
                                                     return (
-                                                    <div style={{padding:'10', margin:'10',marginBottom:'100',fontSize:"2vmin",padding: '10px',color: '#8d93ab'}}>{parseFloat(item).toFixed( 2 )}</div>
+                                                    <div style={{padding:'10', margin:'10',marginBottom:'100',fontSize:"2vmin",padding: '9px',color: '#8d93ab'}}>{parseFloat(item).toFixed( 2 )}</div>
                                                     )
                                                     })
                                                 }
                                             </div>
 
-                                            <div className="col" style={{border: '1px solid',padding:'10px',textAlign: 'center'}}>
+                                            <div className="col" style={{border: '1px solid',padding:'9px',textAlign: 'center'}}>
                                             <h5 style={{color: 'white' }}>Low</h5>
                                             <hr style={{background: "grey"}}/>
                                             {lowVal.slice(0,noOfLow).map((item) => {
                                                     return (
-                                                    <div style={{color: '#8d93ab',padding:'10', margin:'10',fontSize:"2vmin",padding: '10px'}}>{parseFloat(item).toFixed( 2 )}</div>
+                                                    <div style={{color: '#8d93ab',padding:'10', margin:'10',fontSize:"2vmin",padding: '9px'}}>{parseFloat(item).toFixed( 2 )}</div>
                                                     )
                                                     })
                                                 }
                                             </div>
 
-                                            <div className="col" style={{border: '1px solid',padding:'10px'}}>
+                                            <div className="col" style={{border: '1px solid',padding:'9px'}}>
                                             <h5 style={{color: 'white' ,textAlign: 'center'}}>Close</h5>
                                             <hr style={{background: "grey"}}/>
                                             {closeVal.slice(0,noOfClose).map((item) => {
                                                     return (
-                                                    <div style={{color: '#8d93ab',fontSize:"2vmin",padding: '10px'}}>{parseFloat(item).toFixed( 2 )}</div>
+                                                    <div style={{color: '#8d93ab',fontSize:"2vmin",padding: '9px',textAlign: 'center'}}>{parseFloat(item).toFixed( 2 )}</div>
                                                     )
                                                     })
                                                 }
                                             </div>
-
-
                                         </div>
-
-
-
-
-
 
                     </div>
                     }
-                                </div>
+                        </div>
                                 <div className="col-md-5 col-sm-12" >
-                                    <h2 style={{color: 'white',textAlign: 'justify'}}>News</h2>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <h2 className="text-white text-left text-uppercase mb-4  font-italic">News</h2>
+                                        </div>
+                                        <div className="col-md-5">
+                                            <h3 className="text-white text-right text-uppercase mt-3 font-italic">{this.state.showMore ?<button type="button" class="btn btn-primary btn-sm" onClick={()=> this.handleClick(true)}>Show Less</button>:<button type="button" class="btn btn-primary btn-sm" onClick={()=> this.handleClick(false)}>Show More</button>}</h3>
+                                        </div>
+                                    </div>
+                                
                                     {/* <NewsCard newsArticle={this.state.articles} /> */}
+                                    {loading ?<Loading />:
                                     <div className="container-fluid">
                         {newsElement.slice(0,numberOfItems).map((item,index)=>
-                                        <div className="col" style={{border: "0.2px solid", color: "#ffffff" ,marginBottom: "20px"}}>
+                                        <div className="col" style={{border: "0.2px solid", color: "#ffffff" ,marginBottom: "15px"}}>
                                             <div className="row">
                                                 <div className="col-sm-4 col-xs-4" >
                                                     <img src={item.urlToImage} style={{width:'100%',maxHeight:"100px",objectFit:'contain',verticalAlign: "middle",margin:'10px'}} />
@@ -336,10 +336,12 @@ class Stocks extends Component {
                                             </div>
                                         </div>
                                                 )}
-                                                {this.state.showMore ?<button onClick={()=> this.handleClick(true)} style={{color:"red"}}>Show Less</button>:<button onClick={()=> this.handleClick(false)} style={{color:"red"}}>Show more</button> }
+                                                
                                             </div>
+                                    };
                                 </div>
                             </div>
+                            
                             </div>
 
                     <Footer/>

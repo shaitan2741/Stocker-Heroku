@@ -165,4 +165,9 @@ padding: .5rem 1rem;
   padding:0px;
   margin:0px;
 }
-
+.nav-link{
+  color:white;
+}
+.homepageBg{
+  background-image:url('./assets/maxim-hopman-fiXLQXAhCfk-unsplash-2.jpg');
+}

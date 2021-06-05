@@ -5,6 +5,7 @@ import particle from './Components/ParticleComponent.js';
 import ManageStocks from './StockManagement/ManageStocks';
 import AiPrediction from './Prediction/AiPrediction.js';
 import About from './Components/AboutComponent';
+import UnivariateStepper from './Components/UnivariateStepper';
 
 import { Switch, Route, Redirect,withRouter,BrowserRouter } from 'react-router-dom';
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <Route exact path='/about' component={About}/>
     <Route exact path='/home/' component={particle}/>
     <Route exact path='/market' component={ManageStocks} />
-    <Route exact path='/predict' component={AiPrediction} />
+    <Route exact path='/predict' component={UnivariateStepper} />
     <Redirect to='/about'/>
     </Switch>
     {/* <Footer /> */}

@@ -3,139 +3,44 @@ import Particles from 'react-particles-js';
 import Footer from './FooterComponent';
 import MyCarousel from './carouselComponent';
 import ParticlesBg from 'particles-bg';
+import { Button} from 'reactstrap';
+import '../HeroSection.css';
 
 
 class particle extends Component{
 
     render(){
         return (
-            <div >
 
-            
 <div>
-<ParticlesBg color="#FFFFFF" type="cobweb" bg={true} />
-<MyCarousel />
-</div> 
-        <Particles 
-            params={{ 
-            // particles: { 
-            //     number: { 
-            //     value: 30, 
-            //     density: { 
-            //         enable: true, 
-            //         value_area: 800, 
-            //     } 
-            //     }, 
-            // }, 
-                "particles": {
-        "number": {
-        "value": 80,
-        "density": {
-            "enable": true,
-            "value_area": 600
-        }
-        },
-        "color": {
-        "value": "#ffffff"
-        },
-        "shape": {
-        "type": "circle",
-        "stroke": {
-            "width": 0,
-            "color": "#000000"
-        },
-        "polygon": {
-            "nb_sides": 5
-        },
-        },
-        "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-            "enable": false,
-            "speed": 0.1,
-            "opacity_min": 0.1,
-            "sync": false
-        }
-        },
-        "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-            "enable": false,
-            "speed": 10,
-            "size_min": 0.1,
-            "sync": false
-        }
-        },
-        "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-        },
-        "move": {
-        "enable": true,
-        "speed": 2,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-        }
-        }
-    },
-    "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-        "onhover": {
-            "enable": true,
-            "mode": "grab"
-        },
-        "onclick": {
-            "enable": true,
-            "mode": "push"
-        },
-        "resize": true
-        },
-        "modes": {
-        "grab": {
-            "distance": 140,
-            "line_linked": {
-            "opacity": 1
-            }
-        },
-        "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-        },
-        "repulse": {
-            "distance": 200,
-            "duration": 0.4
-        },
-        "push": {
-            "particles_nb": 4
-        },
-        "remove": {
-            "particles_nb": 2
-        }
-        }
-    },
-    "retina_detect": true
-            }}
-            
-        >   </Particles> 
+<div className='hero-container'>
+{/* <video src='/videos/video-1.mp4' autoPlay loop muted /> */}
 
-        
-    <Footer />
+<img src={"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"}/>
+
+<br/>
+<br/>
+<h1>ADVENTURE AWAITS</h1>
+<p>What are you waiting for?</p>
+<div className='hero-btns'>
+  <Button
+    className='btns'
+    buttonStyle='btn--outline'
+    buttonSize='btn--large'
+  >
+    GET STARTED
+  </Button>
+  <Button
+    className='btns'
+    buttonStyle='btn--primary'
+    buttonSize='btn--large'
+    onClick={console.log('hey')}
+  >
+    WATCH TRAILER <i className='far fa-play-circle' />
+  </Button>
+</div>
+</div>
+    {/* <Footer /> */}
 </div>
 
         

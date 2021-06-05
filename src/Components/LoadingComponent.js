@@ -17,7 +17,7 @@ function Loading() {
         &nbsp;
 
             <Loader
-        type="ThreeDots"
+        type="TailSpin"
         color="#ffffff"
         height={100}
         width={100}
